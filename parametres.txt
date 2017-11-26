@@ -1,0 +1,10 @@
+# Consigne: Veuillez entrer les valeurs des paramètres suivants en SI. Sur une ligne. Voir doc
+0
+1
+0.79
+0.79
+1
+8
+0.25
+1e-3
+500
