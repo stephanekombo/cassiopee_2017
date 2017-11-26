@@ -1,0 +1,79 @@
+\section{Introduction}\label{introduction}
+
+
+\subparagraph{}
+
+  Ce rapport est une tentative de contribution aux travaux de Christine Letrou sur les faisceaux gaussiens.
+La méthode de Lancer de Faisceaux Gaussiens (LFG) permet de calculer des champs électromagnétiques se propageant
+dans des environnements complexes comportant des obstacles.
+La question principale qui a mené à la proposition de ce travail porte sur l'intérêt de cette méthode pour les calculs
+de Surface Équivalente Radar (SER) monostatique en environnement urbain.
+Le but est donc ici la détermination du nombre de faisceaux à lancer suivant le type d’environnement
+(densité et disposition des bâtiments) et selon le champ électromagnétique considéré, ici
+une onde électromagnétique plane progressive harmonique (OPPH).
+
+
+\subparagraph{}
+
+La démarche justifiant l'approche utilisée dans ce travail est classique: afin de résoudre les problèmes de propagation
+d'un champ électromagnétique, il est d’usage de décomposer ce champ sur une \og base \fg\ d’objets élémentaires
+dont on connaît le comportement, afin d’en déduire les propriétés globales par théorème de superposition.
+Il faut donc choisir la famille d'éléments de base de façon pertinente, afin de simplifier le problème étudié.
+On fait ici le choix d'un ensemble très particulier de fonctions gaussiennes,
+appelé un \emph{frame de Gabor à fenêtres gaussiennes}, pour au moins ces deux raisons essentielles:
+
+\begin{itemize}
+
+ \item Il existe plusieurs représentations et définitions des faisceaux gaussiens; dans notre cas,
+chacun des faisceaux correspondra à une partie du champ incident, fenêtré par une fonction gaussienne.
+On dira alors que chaque fenêtre du frame rayonne sous la forme d'un faisceau gaussien.
+
+\item Dans un contexte d'analyse spectrale, incontournable en electromagnétisme,
+ nous allons nous interesser aux propriétes \emph{spatiales} des faisceaux étudiés, et nous allons avoir besoin de
+ conserver la connaissance de certaines propriétés des faisceaux dans le domaine spectral, ou domaine transformé.
+ Il se trouve que les frames de Gabor à fenêtres gaussiennes sont les objets élémentaires qui nous accordent le meilleur
+ compromis entre connaissance des objets globaux à la fois dans le domaine spatial et le domaine spectral 
+ (on parle de bonne localisation spatiale et spectrale).
+ 
+\end{itemize}
+
+Par soucis de concision, nous supposerons connue la théorie générale des frames.
+Bien que \cite{SlidesLetrou} résume la plupart des résulats fondamentaux utilisés dans le présent rapport,
+il peut être profitable de se référer au premier chapitre de \cite{FiniteFrameTheory} pour avoir une introduction
+plus détaillée, incluant des prérequis d'algèbre linéaire.
+
+\cite{GaborAlgebra} présente les éléments fondamentaux de la théorie des frames de manière plus théorique.
+ 
+ 
+
+\subparagraph{}
+
+  Pour réaliser ce projet de calcul de SER, il faut donc, pour cette OPPH représentée par sa composante électrique $\v{E}$,
+  déterminer une décomposition \emph{exploitable} de la forme $\v{E} = \Sum\v{A}_{mnpq}w_{mnpq}$,
+où le frame de Gabor $(w_{mnpq})_{m,n,p,q\in\Z}$ est construit à partir d'une fenêtre $w$ gaussienne,
+et les $\v{A}_{mnpq}$ seront les coefficients de la décomposition, soit l'objet concret de tout le travail
+présenté dans ce rapport.
+
+La proposition suivante, démontrée pas à pas dans \cite{TheseLugara}, justifie la validité de notre démarche:
+
+\begin{prop}
+
+  Les coefficients $\v{A}_{mnpq}$ caractérisent complétement $\v{E}$, avec une reconstruction numériquement stable
+  de $\v{E}$ à partir de ces coefficients, \emph{si et seulement si} $(w_{mnpq})$ forme un frame de Gabor.  
+
+  De même pour le problème dual, tout champ $\v{E}$ est exprimable en tant que superposition de fenêtres $w_{mnpq}$
+ \emph{si et seulement si} $(w_{mnpq})$ forme un frame de Gabor.
+
+ \end{prop}
+
+
+\subparagraph{}
+
+Dans un premier temps, la suite du document propose donc une expression la plus explicite possible des $\v{A}_{mnpq}$.
+Leur expression faisant intervenir la fonction duale $\h{\t{w}}$, pour laquelle on ne dispose pas
+d'expression analytique, nous seront amenés à l'approximer grâce à un algorithme itératif décrit dans \cite{TheseLugara}.
+Le second objectif de ce rapport sera donc la validation numérique de cette approximation, c'est-à-dire la vérification
+de la bonne reconstruction de notre OPPH avec une précision suffisante par utilisation de cette démarche.
+
+
+\newpage

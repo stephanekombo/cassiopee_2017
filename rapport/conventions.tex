@@ -1,0 +1,65 @@
+\section*{Conventions et notations}
+
+
+  Dans un contexte de physique, nous utiliserons presque exclusivement la notation impropre $w(x)$
+  pour désigner la fonction $x\rightarrow w(x)$, afin de mettre en évidence la variable $x$ considérée.
+  
+  Sauf mention contraire, toute relation dépendant d'une variable $x$
+  sera valable pour toute autre variable.  
+  Selon le cadre (monovarié ou pas, ou en cas de notation supplémentaire), on désignera indifféremment
+  $w$, $w_x$, $w^x$, $w(x)$, $w^x(x)$, ou $w_x(x)$, les indices supplémentaires étant utilisés
+  surtout dans un contexte multivarié.
+
+  Afin de simplifier les notations, toute intégrale sans borne sera considérée sur $\R$ entier:
+  $\Int=\Int_{-\infty}^{\infty}$
+  
+  De même, sans précision supplémentaire, toute somme est considérée sur l'ensemble d'indices de sommation
+  le plus grand possible:
+  pour $a,\dots,z$ entiers, $\Sum=\Sum_{a,\dots,z}=\Sum_{a=-\infty}^{\infty}\dots\Sum_{z=-\infty}^{\infty}$
+
+  Plus conventionnellement, nous adopterons les notations définies sur cette page.
+  Pour celles présentées ensuite dans la suite du document, nous tenterons de rester en cohérence
+  avec les thèses de Delphine Lugara et Ihssan Ghannoum (respectivement \cite{TheseLugara} et \cite{TheseGhannoum}),
+  car le travail présenté ici se place dans la continuité de celles-ci.
+
+
+\begin{center}
+$
+\ba{lcllc}
+  i &\ &\  &
+  \text{Nombre imaginaire pur tel que } i^2 = -1&\\
+  h^\ast, f^\ast &\ &\ &
+  \text{Complexe, fonction conjugué.e} &\\
+  \e^{-i\omega t} &\ &\  &
+  \text{Convention en régime harmonique} &\\
+  \v{a}\cdot\v{b} &\ &\  &
+  \text{Produit scalaire de deux vecteurs} &\\
+  <f,g> = \Int fg^\ast = \Int f(x)g(x)^\ast dx &\ &\ &
+  \text{Produit scalaire de deux fonctions monovariées} &\\
+  <f,g> = \Int\Int f(x,y)g(x,y)^\ast dxdy &\ &\ &
+  \text{Produit scalaire de deux fonctions bivariées} &\\
+  \t{f}(k_x) = \F{\lb f(x)\rb}(k_x) = \Int f(x)\e^{-ixk_x}dx &\ &\ &
+  \text{Transformée de Fourier de $f$}&\\
+  \t{f}(k_x,k_y) = \Int\Int f(x,y)\e^{-i(xk_x+yk_y)}dxdy &\ &\ &
+  \text{Transformée de Fourier $2D$}&\\
+  f(x) = \F^{-1}{\lb\t{f}(k_x)\rb}(x) = \ff[1]{2\pi}\Int\t{f}(k_x)\e^{ixk_x}dx &\ &\ &
+  \text{Transformée de Fourier inverse de $f$}&\\
+  f(x,y) = \ff[1]{(2\pi)^2}\Int\Int\t{f}(k_x,k_y)\e^{i(xk_x+yk_y)}dx &\ &\ &
+  \text{Transformée inverse $2D$}&\\
+  \llb m,n\rrb &\ &\  &
+  \text{Intervalle d'entiers }&\\
+  \lfloor x\rfloor &\ &\  &
+  \text{Partie entière par défaut}&	\\
+  \lceil x\rceil &\ &\  &
+  \text{Partie entière par excès}&  
+\ea
+$
+\end{center}
+
+
+Notons que cette convention, pour la transformée de Fourier et son inverse, a un impact sur certaines
+propriétés de la transformée. En cas de doute, on pourra consulter le formulaire en annexe \ref{formulaire}
+en plus de cette section de conventions.
+
+
+\newpage

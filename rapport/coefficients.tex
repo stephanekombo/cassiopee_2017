@@ -1,0 +1,147 @@
+\section{Décomposition de l'onde plane sur le frame de fenêtre gaussiennes}\label{decomposition}
+
+
+\subsection{Simplifications préalables}
+
+
+Considérons le champ $\v{E} = \v{E}_0\exp\lb i(xk_{ix}+yk_{iy}+zk_{iz})\rb$ défini en \eqref{OPPH}.
+Pour sa composante vectorielle, on peut écrire $\v{E}_0=E_{0x}\h{x}+E_{0y}\h{y}$,
+avec $E_{0x}$ et $E_{0y}$ constants. Par linéarité des opérateurs que nous allons utiliser,
+il suffit de décomposer $f(x,y,z) = \exp\lb i(xk_{ix}+yk_{iy}+zk_{iz})\rb$ (terme ondulatoire)
+pour obtenir la décomposition du champ global.
+
+Il suffit de le faire sur le plan d'équation $z=0$;
+en effet, par définition de l'onde plane, la connaissance de celle-ci sur un front d'onde permet d'en déduire
+le champs en tout point $M(x,y,z)$ de l'espace par translation.
+
+
+\subparagraph{}
+
+Considérons donc  $f(x,y) = f(x,y,0) = \exp\lb i(xk_{ix}+yk_{iy})\rb$.
+
+
+\subsection{Décomposition du spectre du terme ondulatoire}\label{decompositionSpectre}
+
+
+Pour le spectre $\t{f}$ de cette fonction, la théorie des frames de Gabor nous garantit l'existence
+d'une décomposition sur le frame $(\t{w}_{nmqp}) = (\t{w}^x_{nm}\t{w}^y_{qp})$ de la forme:
+
+\be
+\t{f}=\Sum\t{A}_{mnpq}\t{w}^x_{nm}\t{w}^y_{qp},\text{ où }
+\t{A}_{mnpq}=<\t{f},\h{\t{w}_{nm}^x\t{w}_{qp}^y}>=<\t{f},\h{\t{w}_{nm}^x}\h{\t{w}_{qp}^y}>.
+\label{a}
+\tag{a}
+\ee
+
+Il s'agit d'une récriture de \eqref{analyse} et \eqref{synthese} vue depuis le domaine spectral. 
+On a donc:
+
+\begin{align}
+  \t{A}_{mnpq}  &=\Int\t{f}\lc \h{\t{w}_{nm}^x}\h{\t{w}_{qp}^y}\rc^\ast&
+  \text{par définition de }<.,.>\nonumber\\
+      &=\Int\Int\t{f}(k_x,k_y)\lc\h{\t{w}}_{nm}(k_x)\h{\t{w}}_{qp}(k_y)\rc^\ast dk_xdk_y &
+      \text{ }\nonumber\\
+  \t{A}_{mnpq}  &=\Int\Int\t{f}(k_x,k_y)\h{\t{w}}_{nm}(k_x)^\ast\h{\t{w}}_{qp}(k_y)^\ast dk_xdk_y &
+  \text{ }\label{formuletA}
+\end{align}
+
+
+On cherche donc à calculer les coefficients $(\t{A}_{mnpq})_{m,n,p,q\in\Z}$ en utilisant \eqref{formuletA}.
+
+
+\subsubsection{Calcul préliminaire}
+
+
+\begin{align}
+  \t{f}(k_x,k_y)  &= \Int\Int f(x,y)\e^{-i(xk_x+yk_y)}dxdy &
+  \text{par \eqref{tf}}\nonumber\\
+      &= \Int\Int\e^{i(xk_{ix}+yk_{iy})}\e^{-i(xk_x+yk_y)}dxdy &
+      \text{par réécriture de \eqref{OPPH}}\nonumber\\
+      &= \Int\Int\e^{-ix(k_x-k_{ix})}\e^{-iy(k_y-k_{iy})}dxdy & 
+      \text{ }\nonumber\\
+      &= \Int 1\cdot\e^{-ix(k_x-k_{ix})}dx\Int 1\cdot\e^{-iy(k_y-k_{iy})}dy &
+      \text{par théorème de Fubini}\nonumber\\
+      &= \F\lb \1\rb(k_x-k_{ix})\F\lb \1\rb(k_y-k_{iy}) &
+      \text{où $\1$ désigne la fonction constante égale à $1$}\nonumber\\
+  \t{f}(k_x,k_y)  &= \delta (k_x-k_{ix})\delta (k_y-k_{iy}) &
+  \text{par  \eqref{t1}}\label{spectre}
+\end{align}
+
+Cette expression va considérablement simplifier l'expression de $\t{A}_{mnpq}$, en réduisant l'intégrale double
+à la valeur de l'intégrande évaluée en un point du domaine spectral (propriété de l'impulsion de Dirac).
+
+
+\subsubsection{Retour à la décomposition du terme ondulatoire}
+
+
+\begin{align*}
+  \t{A}_{mnpq} &= \Int\Int\delta (k_x-k_{ix})\delta (k_y-k_{iy})
+  \h{\t{w}}_{nm}(k_x)^\ast\h{\t{w}}_{qp}(k_y)^\ast dk_xdk_y &
+  \text{par \eqref{formuletA} et \eqref{spectre}}\\
+   &= \Int\delta (k_x-k_{ix})\h{\t{w}}_{nm}(k_x)^\ast dk_x
+  \Int\delta (k_y-k_{iy})\h{\t{w}}_{qp}(k_y)^\ast dk_y &
+  \text{par théorème de Fubini}
+\end{align*}
+
+Or par définition, $\delta$ est telle que : $\Int\delta (k_x-k_{ix})\h{\t{w}}_{nm}(k_x)^\ast dk_x =
+\h{\t{w}}_{nm}(k_{ix})^\ast $
+
+Et de même pour la variable $y$: $\Int\delta (k_y-k_{iy})\h{\t{w}}_{qp}(k_y)^\ast dk_y =
+\h{\t{w}}_{qp}(k_{iy})^\ast$
+
+On obtient donc simplement l'expression:
+
+\be
+\t{A}_{mnpq} = \h{\t{w}}_{nm}^\ast(k_{ix})\h{\t{w}}_{qp}^\ast(k_{iy}) = 
+\h{\t{w}}(k_{ix}-n\b{k}_x)^\ast\h{\t{w}}(k_{iy}-q\b{k}_y)^\ast\e^{+i\lc m\b{x}k_{ix}+p\b{y}k_{iy}\rc}
+\label{tA}
+\ee
+
+
+\subsection{Décomposition effective de l'onde}\label{decompositionOnde}
+
+
+On a donc, à l'issu de \ref{decompositionSpectre}, la décomposition de $\t{f}$ suivante:
+
+\be
+\t{f}(k_x,k_y) = \Sum \t{A}_{mnpq}\t{w}^x_{nm}(k_x)\t{w}^y_{qp}(k_y),
+\text{ où }\t{A}_{mnpq} = \h{\t{w}}_{nm}^\ast(k_{ix})\h{\t{w}}_{qp}^\ast(k_{iy})
+\ee
+
+Cette décomposition a son analogue dans le domaine spatial
+\footnote{\eqref{b} peut être vu comme la transformée de Fourier inverse de \eqref{a}, réécrite grace à \eqref{wmnt}}
+(voir \eqref{analyse} et \eqref{synthese}):
+
+\be
+f(x,y) = \Sum A_{mnpq}w^x_{mn}(x)w^y_{pq}(y),
+\text{ où }A_{mnpq} = \t{A}_{mnpq}\e^{-i(mn\b{x}\b{k}_x +pq\b{y}\b{k}_y)}
+\label{b}
+\tag{b}
+\ee
+
+
+La reconstruction de l'onde $\v{E}$ se fait donc finalement avec les formules:
+
+\begin{empheq}[box=\fbox]{equation}
+\v{E}(x,y,z=0)=\lc\Sum A_{mnpq}w^x_{mn}(x)w^y_{pq}(y)\rc\v{E}_0
+\label{vE}
+\end{empheq}
+
+où: 
+ 
+\begin{empheq}[box=\fbox]{equation}
+A_{mnpq}=\h{\t{w}}_{nm}^\ast(k_{ix})\h{\t{w}}_{qp}^\ast(k_{iy})\e^{-i(mn\b{x}\b{k}_x +pq\b{y}\b{k}_y)}
+\label{A}
+\end{empheq}
+
+
+\subparagraph{}
+
+Dans le cadre d'un calcul formel, il est difficile de faire plus explicite et concis
+car le dual d'une fonction quelconque ne dispose pas d'expression analytique connue.
+Ce sont donc ces formules (encadrées) que nous utiliserons en \ref{implementation} lors de la validation numérique:
+l'algorithme appliqué va nous permettre d'approximer numériquement $\h{\t{w}}$ (consulter \cite{TheseLugara},
+\cite{FiniteFrameTheory} et \cite{Algo} pour des démonstrations et détails sur cet algorithme).
+
+
+\newpage

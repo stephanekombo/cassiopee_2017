@@ -1,0 +1,70 @@
+\section{Formulaire}\label{formulaire}
+
+Les formules ci-dessous sont redémontrées avec les conventions précédentes
+et présentées de manière à souligner la correspondance entres les domaines spatial et spectral.
+  
+\begin{align}
+\text{Domaine spatial}	&	&\text{Domaine spectral}
+\nonumber\\
+\text{Décomposition spatiale}	&	&	\text{Transformée de Fourier}
+\nonumber\\
+f(x) = \f[1]{2\pi}\Int\t{f}(k_x)\e^{ixk_x}dk_x	&	&	\t{f}(k_x) = \Int f(x)\e^{-ixk_x}dx
+\tag{TF}\label{tf}\\
+f(x,y) = \f[1]{(2\pi)^2}\Int\t{f}(k_x,k_y)\e^{i(xk_x+yk_y)}dk_xdk_y	&	&
+\t{f}(k_x,k_y) = \Int f(x,y)\e^{-i(xk_x+yk_y)}dxdy
+\tag{T2D}\label{tf2d}\\
+\text{Fonctions constantes...}	&		&	\text{... et impulsions de Dirac}
+\nonumber\\
+f(x) = 1,\ g(x) = \delta(x)  &	&	\t{f}(k_x) = \delta(k_x),\ \t{g}(k_x) = 1
+\label{t1}\\
+\text{Translation spatiale}	&	&	\text{Modulation spectrale}
+\nonumber\\
+f(x) \rightarrow f(x-x_0)  &	&	\t{f}(k_x)\e^{-ix_0k_x}=\mathcal{F}[f(x-x_0)]
+\label{translation}\\
+\text{Modulation spatiale}	&	&	\text{Translation spectrale}
+\nonumber\\
+f(x) \rightarrow f(x)\e^{ixk_0}  &	&	\t{f}(k_x-k_0)=\mathcal{F}[f(x)\e^{ixk_0}]
+\label{modulation}\\
+\text{Dilatation spatial}	&	&	\text{Dilatation spectrale}
+\nonumber\\
+f(x) \rightarrow f(ax)  &	&	\f[1]{|a|}\t{f}\lc\f[k_x]{a}\rc =\mathcal{F}[f(ax)]
+\label{dilatation}\\
+\text{Fenêtre gaussienne}	&	&	\text{Fenêtre transformée}
+\nonumber\\
+w(x)=\r{\f[\r{2}]{L_x}}\e^{-\pi\lc\f[x]{L_x}\rc^2},  &	&	
+\t{w}(k_x)=\r{\r{2}L_x}\e^{-\pi\lc\f[k_x]{\Omega_x}\rc^2},
+\nonumber\\
+Lx\text{ largeur de fenêtre gaussienne}	&	&	\Omega_x =\f[2\pi]{L_x}\text{ largeur spectrale}
+\nonumber\\
+\text{Frame de Gabor}	&	&	\text{Frame de Gabor dans le domaine transformé}
+\nonumber\\
+w_{mn}(x)=w(x-m\b{x})\e^{ixn\b{k}_x},  &	&	\t{w}_{nm}(k_x)=\t{w}(k_x-n\bar{k}_x)\e^{-im\bar{x}k_x},
+\nonumber\\
+\text{limites }0<A\leq B<\infty	&	&	\text{limites }0<2\pi A\leq 2\pi B<\infty
+\nonumber\\
+\text{Analyse et synthèse des frames
+}	&	&	\text{Analyse et synthèse spectrale des frames}
+\nonumber\\
+f=\Sum A_{mn}w_{mn},\text{ où }A_{mn}=<f,\h{w}_{mn}>	&	&	
+\t{f}=\Sum \t{A}_{mn}\t{w}_{nm}=\Sum A_{mn}\e^{imn\b{x}\b{k}_x}\t{w}_{nm}
+\label{analyse}\\
+A_{mn}=\Int f(x)\h{w}(x-m\b{x})^\ast \e^{-ixn\b{k}_x}dx	&	&
+A_{mn}=\f[\e^{-imn\b{x}\b{k}_x}]{2\pi}\Int \t{f}(k_x)\t{\h{w}_{mn}}(k_x)^\ast dk_x
+\label{synthese}
+\end{align}
+
+
+Autres formule utile:
+
+ Si $(\b{x},\b{k}_x)=\r{\nu_x}(L_x,\Omega_x)$, alors
+
+ \be
+ \t{\h{w}}=\frac{1}{2\pi}\h{\t{w}}
+ \label{duals}
+ \ee
+
+
+Remarque: le slide 19 de \cite{SlidesLetrou} ainsi que la formule $(1.44)$ de \cite{TheseLugara} comportent des erreurs.
+
+
+\newpage

@@ -1,0 +1,159 @@
+\section{Démonstrations}\label{demos}
+
+
+\subsection{Frame transformé et frame dans le domaine transformé}
+
+
+\begin{prop}
+
+Pour $m,n\in\Z$, la transformée de Fourier de la fenêtre translatée et modulée dans le domaine spatial est différente
+de la fenêtre transformée puis translatée et modulée dans le domaine spectral. Plus précisément:
+\be
+\t{w_{mn}} = \e^{imn\b{x}\b{k}_x}\t{w}_{nm}
+\label{wmnt}
+\ee
+
+\end{prop}
+
+
+\subsubsection*{Preuve}
+
+
+\begin{align*}
+\forall k_x\in\R, \t{w_{nm}}(k_x)	&	= \Int w_{mn}(x)\e^{-ixk_x}dx	&
+\text{par \eqref{tf}}\\
+  &	= \Int w(x-m\b{x})\e^{inx\b{k}_x}\e^{-ixk_x}dx	&
+  \text{par \eqref{wmn}}\\
+  &	= \Int w(x-m\b{x})\e^{-ix(k_x-n\b{k}_x)}dx	&
+  \text{}\\
+  &	= \Int w(x)\e^{-i(x+m\b{x})(k_x-n\b{k}_x)}dx	&
+  \text{par changement de variable (translation)}\\
+  &	= \e^{-im\b{x}(k_x-n\b{k}_x)}\Int w(x)\e^{-ix(k_x-n\b{k}_x)}dx	&
+  \text{par linéarité}\\
+  &	= \e^{imn\b{x}\b{k}_x}\e^{-im\b{x}k_x}\t{w}(k_x-n\b{k}_x)	&
+  \text{par \eqref{tf} et \eqref{translation}}\\
+\forall k_x\in\R, \t{w_{nm}}(k_x)	&	= \e^{imn\b{x}\b{k}_x}\t{w}_{nm}(k_x)	&
+\text{par \eqref{wtnm}}
+\end{align*}
+
+
+\subsection{Produits scalaires intra-frame dans le domaine spatial}
+
+
+\begin{prop}
+
+On a montré manuscritement que:
+\be
+<w_{mn},w_{rs}> = \e^{-\pi\lb\ff[(r-m)^2]{2}+\ff[(s-n)^2]{2}+i(r+m)(s-n)\rb\nu_x}
+\label{ps}
+\ee
+
+\end{prop}
+
+
+\subsubsection*{Explication}
+
+
+$<w_{mn},w_{rs}> = \e^{-\lb\ff[2\pi]{L_x^2}\lc\ff[(r-m)\b{x}]{2}\rc^2+\ff[L_x^2]{2\pi}\lc\ff[(s-n)\b{k}_x]{2}\rc^2
++i\ff[(r+m)(s-n)\b{x}\b{k}_x]{2}\rb}$
+d'après le résultat donné dans \cite{TheseLugara} et redémontré manuscritement.
+\footnote{La démonstration via 3 méthodes différentes a d'ailleurs confirmé une erreur de signe dans $(1.44)$.}
+Cette dernière équation a été réécrite avec \eqref{nux}, \eqref{Lx} et \eqref{Ox}, afin d'exprimer la dépendance
+en $\nu_x$ de ce produit scalaire. Sans entrer dans des détails trop fastidieux à recopier,
+rappelons que, par \eqref{wmn}:
+
+$$<w_{mn},w_{rs}> = \Int w(x-m\b{x})\e^{ixn\b{k}_x}w^{\ast}(x-r\b{x})\e^{-ixs\b{k}_x}dx$$
+
+d'où: 
+
+$$
+<w_{mn},w_{rs}> = \r{\ff[\r{2}]{L_x}}\Int \r{\ff[\r{2}]{L_x}}
+\e^{-\ff[\pi]{L_x^2}\lb (x-m\b{x})^2+(x-r\b{x})^2\rb}\e^{-ix(s-n)\b{k}_x}dx
+$$
+
+soit, après mise sous forme canonique du trinôme $\lb (x-m\b{x})^2+(x-r\b{x})^2\rb$:
+
+\be
+<w_{mn},w_{rs}> = \r{\ff[\r{2}]{L_x}}\e^{-\ff[\pi]{2}(r-m)^2\nu_x}\t{f}\lc(s-n)\b{k}_x\rc
+\label{X}
+\ee
+
+où $f(x) = w\lc\r{2}\lb x-\ff[(r+m)\b{x}]{2}\rb\rc$. Ainsi:
+
+\newpage
+
+
+\begin{itemize}
+ \item Le terme $\e^{-\ff[\pi]{2}(r-m)^2\nu_x}$ est identique dans \eqref{ps} et \eqref{X};
+ \item Au cours du calcul de la transformée de $f$, la dilatation de facteur $\r{2}$ fait apparaître un facteur
+ $\ff[1]{\r{2}}$ (voir \eqref{dilatation}), et l'expression de $\t{w}$ fait apparaître un facteur $\r{\r{2}L_x}$,
+ qui vont compenser le terme $\r{\ff[\r{2}]{L_x}}$ dans \eqref{X}
+ \item Le terme $\t{f}\lc(s-n)\b{k}_x\rc$ introduit d'une part:
+ \begin{itemize}
+  \item d'une part, le terme $(s-n)^2$ à cause du carré dans l'expression de $\t{w}$,
+  \item d'autre part, par translation (voir \eqref{translation}), le produit $(r+m)(s-n)$ dans une exponentielle complexe.
+ \end{itemize}
+
+\end{itemize}
+
+On retrouve donc bien l'expression donnée dans \cite{SlidesLetrou}.
+
+
+\subsection{Produits scalaires intra-frame dans le domaine spectral}
+
+
+\begin{prop}
+
+\be
+<\t{w}_{nm},\t{w}_{sr}> = 2\pi\e^{-\pi\lc\ff[(m-r)^2]{2}+\ff[(s-n)^2]{2}+i(m-r)(n+s)\rc\nu_x}
+\label{ps bis}
+\ee
+
+\end{prop}
+
+
+\subsubsection*{Preuve}
+
+
+\begin{align*}
+<\t{w}_{nm},\t{w}_{sr}>	&	= <\e^{-imn\b{x}\b{k}_x}\t{w_{mn}},\e^{-irs\b{x}\b{k}_x}\t{w_{rs}}>	&
+\text{par \eqref{wmnt}}\\
+  &	= \e^{-i(mn-rs)\b{x}\b{k}_x}<\t{w_{mn}},\t{w_{rs}}>	&
+  \text{par sesquilinéarité à droite de $<\cdot,\cdot>$}\\
+<\t{w}_{nm},\t{w}_{sr}>	&	= 2\pi\e^{-i(mn-rs)\b{x}\b{k}_x}<w_{mn},w_{rs}>	&	\text{par \eqref{parseval}}
+\end{align*}
+
+D'ou finalement, par \ref{ps} et \ref{nux}:
+
+$$<\t{w}_{nm},\t{w}_{sr}> = 2\pi\e^{-\pi\lc\ff[(m-r)^2]{2}+\ff[(s-n)^2]{2}+i\lb(m+r)(s-n)+2(mn-rs)\rb\rc\nu_x}$$
+$$<\t{w}_{nm},\t{w}_{sr}> = 2\pi\e^{-\pi\lc\ff[(m-r)^2]{2}+\ff[(s-n)^2]{2}+i(m-r)(n+s)\rc\nu_x}$$
+
+
+\subsection{Théorème de Parseval}
+
+
+\begin{prop}
+
+\be
+<f,g> = \f[1]{2\pi}<\t{f},\t{g}>
+\label{parseval}
+\ee
+
+\end{prop}
+
+
+\subsubsection*{Preuve}
+
+
+\begin{align*}
+<f,g>	&	= \Int f(x)g(x)^\ast dx	&	\text{par définition du produit scalaire}\\
+  &	= \Int \lc\f[1]{2\pi}\Int \t{f}(k_x)\e^{ixk_x}dk_x\rc g(x)^\ast dx	&	\text{par \eqref{tf}}\\
+  &	= \Int \f[1]{2\pi}\t{f}(k_x)\lc\Int g(x)^\ast \e^{ixk_x}dx\rc dk_x	&	\text{par théorème de Fubini}\\
+  &	= \Int \f[1]{2\pi}\t{f}(k_x)\lc\Int g(x) \e^{-ixk_x}dx\rc^\ast dk_x	&
+  \text{par linéarité de la conjugaison}\\
+  &	= \f[1]{2\pi}\Int\t{f}(k_x)\t{g}(k_x)^\ast dk_x	&	\text{par \eqref{tf}}\\
+<f,g>	&	= \f[1]{2\pi}<\t{f},\t{g}>	&	\text{par définition du produit scalaire}
+\end{align*}
+
+
+\newpage
